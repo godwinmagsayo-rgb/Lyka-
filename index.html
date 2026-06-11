@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy 1 Week, Lyka! 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Caveat:wght@500;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rose:     #E8637A;
+      --blush:    #F5C0CC;
+      --cream:    #FEF6F0;
+      --mauve:    #9D5C6E;
+      --gold:     #D4956A;
+      --midnight: #2A1A22;
+      --lilac:    #C9A8C0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--midnight);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── PETALS ── */
+    .petal-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .petal {
+      position: absolute;
+      top: -40px;
+      font-size: 1.4rem;
+      animation: fall linear infinite;
+      opacity: 0.7;
+      user-select: none;
+    }
+    @keyframes fall {
+      0%   { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 1.5rem 5rem;
+      background: radial-gradient(ellipse 80% 60% at 50% 30%, #fbe8f0 0%, var(--cream) 70%);
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--rose);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.35rem 1.1rem;
+      border-radius: 99px;
+      margin-bottom: 1.6rem;
+      animation: popIn 0.6s cubic-bezier(.34,1.56,.64,1) 0.3s both;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 8vw, 6rem);
+      line-height: 1.05;
+      color: var(--mauve);
+      margin-bottom: 0.4rem;
+      animation: slideUp 0.7s ease 0.5s both;
+    }
+    .hero-title span {
+      color: var(--rose);
+      font-style: italic;
+    }
+
+    .hero-sub {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(1.3rem, 4vw, 2rem);
+      color: var(--gold);
+      margin-bottom: 2.5rem;
+      animation: slideUp 0.7s ease 0.7s both;
+    }
+
+    .countdown-ring {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 2.5rem;
+      animation: popIn 0.8s cubic-bezier(.34,1.56,.64,1) 0.9s both;
+    }
+    .countdown-ring svg {
+      transform: rotate(-90deg);
+    }
+    .ring-track { fill: none; stroke: var(--blush); stroke-width: 7; }
+    .ring-fill  { fill: none; stroke: var(--rose); stroke-width: 7;
+                  stroke-linecap: round;
+                  stroke-dasharray: 440;
+                  stroke-dashoffset: 62; /* ~7/365 of circle */
+                  transition: stroke-dashoffset 2s ease 1.2s; }
+    .ring-label {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .ring-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--rose);
+      line-height: 1;
+    }
+    .ring-unit {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      color: var(--mauve);
+      text-transform: uppercase;
+    }
+
+    .scroll-hint {
+      margin-top: 3rem;
+      color: var(--lilac);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      animation: bounce 2s infinite 2s;
+    }
+    .scroll-hint::after { content: ' ↓'; }
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(6px); }
+    }
+
+    /* ── MESSAGE SECTION ── */
+    .section {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem;
+    }
+
+    .eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 4px 40px rgba(157,92,110,0.10);
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '💌';
+      position: absolute;
+      top: -1rem;
+      right: 2rem;
+      font-size: 3rem;
+      opacity: 0.25;
+      transform: rotate(15deg);
+    }
+
+    .message-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--rose);
+      margin-bottom: 1.2rem;
+    }
+
+    .message-body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #4a3040;
+      white-space: pre-line;
+    }
+
+    .signature {
+      font-family: 'Caveat', cursive;
+      font-size: 1.5rem;
+      color: var(--mauve);
+      margin-top: 1.8rem;
+      text-align: right;
+    }
+
+    /* ── MEMORIES / ICONS ── */
+    .moments {
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(135deg, #fde8f0 0%, #f8f0fd 100%);
+      padding: 5rem 1.5rem;
+      text-align: center;
+    }
+    .moments-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      color: var(--mauve);
+      margin-bottom: 0.5rem;
+    }
+    .moments-sub {
+      font-size: 0.9rem;
+      color: var(--lilac);
+      margin-bottom: 3rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .tile {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem 1.2rem;
+      box-shadow: 0 2px 20px rgba(157,92,110,0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .tile:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 30px rgba(157,92,110,0.15);
+    }
+    .tile-emoji { font-size: 2.4rem; display: block; margin-bottom: 0.7rem; }
+    .tile-label {
+      font-family: 'Caveat', cursive;
+      font-size: 1.1rem;
+      color: var(--mauve);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 4rem 1.5rem 3rem;
+    }
+    .footer-heart {
+      font-size: 2.5rem;
+      animation: heartbeat 1.4s ease-in-out infinite;
+      display: block;
+      margin-bottom: 1rem;
+    }
+    @keyframes heartbeat {
+      0%,100% { transform: scale(1); }
+      14%      { transform: scale(1.3); }
+      28%      { transform: scale(1); }
+      42%      { transform: scale(1.2); }
+      56%      { transform: scale(1); }
+    }
+    .footer-text {
+      font-family: 'Caveat', cursive;
+      font-size: 1.3rem;
+      color: var(--gold);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.7); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    /* Scroll-reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 520px) {
+      .card { padding: 2rem 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Falling petals -->
+  <div class="petal-canvas" id="petalCanvas"></div>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="badge">✨ 1 Week of Friendship ✨</div>
+    <h1 class="hero-title">Happy <span>1 Week</span>,<br>Lyka!</h1>
+    <p class="hero-sub">💖 from your pinaka-cute na kaibigan</p>
+
+    <!-- Ring counter -->
+    <div class="countdown-ring">
+      <svg viewBox="0 0 160 160" width="160" height="160">
+        <circle class="ring-track" cx="80" cy="80" r="70"/>
+        <circle class="ring-fill" cx="80" cy="80" r="70" id="ringFill"/>
+      </svg>
+      <div class="ring-label">
+        <span class="ring-number">7</span>
+        <span class="ring-unit">Days 🌸</span>
+      </div>
+    </div>
+
+    <p class="scroll-hint">Scroll for a message</p>
+  </section>
+
+  <!-- ── LETTER ── -->
+  <div class="section reveal">
+    <p class="eyebrow">A little letter from Godwin</p>
+    <div class="card">
+      <h2 class="message-name">Hi Lyka! 🌷</h2>
+      <p class="message-body">Hindi ko akalaing sa loob lang ng isang linggo ay magiging ganito na ako comfortable sa'yo. Maraming salamat sa pagiging mabuting kaibigan at sa oras na ibinibigay mo sa akin. Kahit minsan busy ka, nagagawa mo pa ring mag message, makipagkwentuhan, at magpatawa HAHAHHA 
+
+salamat sa lahat ng tawanan, sa pagiging totoo, at sa pagiging isa sa mga taong nagpapasaya ng araw ko.
+
+Wishing for a friendship that grows stronger with time and thank you for being such a wonderful friend, Lyka.</p>
+      <p class="signature">Pinaka-cute mong kaibigan,<br>Godwin 😋 HAHAHHAHA</p>
+    </div>
+  </div>
+
+  <!-- ── MOMENTS ── -->
+  <section class="moments">
+    <div class="reveal">
+      <h2 class="moments-title">7 days, countless memories 🥹</h2>
+      <p class="moments-sub">Look how much can happen in just one week</p>
+      <div class="grid">
+        <div class="tile"><span class="tile-emoji">💬</span><span class="tile-label">Non-stop chats</span></div>
+        <div class="tile"><span class="tile-emoji">😂</span><span class="tile-label">So much laughter</span></div>
+        <div class="tile"><span class="tile-emoji">🫶</span><span class="tile-label">Good vibes only</span></div>
+        <div class="tile"><span class="tile-emoji">🌸</span><span class="tile-label">Blooming friendship</span></div>
+        <div class="tile"><span class="tile-emoji">🤙</span><span class="tile-label">Always there</span></div>
+        <div class="tile"><span class="tile-emoji">✨</span><span class="tile-label">More to come</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="reveal">
+    <span class="footer-heart">💖</span>
+    <p class="footer-text">Here's to many more weeks, months, and years of friendship, Lyka!</p>
+  </footer>
+
+  <script>
+    // ── Falling petals ──
+    const canvas = document.getElementById('petalCanvas');
+    const emojis = ['🌸','🌷','💕','✨','🌺','💗'];
+    for (let i = 0; i < 22; i++) {
+      const p = document.createElement('div');
+      p.className = 'petal';
+      p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.fontSize = (0.9 + Math.random() * 1.2) + 'rem';
+      p.style.animationDuration = (7 + Math.random() * 10) + 's';
+      p.style.animationDelay = (Math.random() * 12) + 's';
+      p.style.opacity = 0.5 + Math.random() * 0.5;
+      canvas.appendChild(p);
+    }
+
+    // ── Ring animation on load ──
+    const ring = document.getElementById('ringFill');
+    const circumference = 2 * Math.PI * 70; // ~440
+    // 7/365 of the circle
+    const fraction = 7 / 365;
+    const targetOffset = circumference * (1 - fraction);
+    ring.style.strokeDasharray = circumference;
+    ring.style.strokeDashoffset = circumference; // start empty
+    setTimeout(() => { ring.style.strokeDashoffset = targetOffset; }, 400);
+
+    // ── Scroll reveal ──
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
